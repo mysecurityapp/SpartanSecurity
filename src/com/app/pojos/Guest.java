@@ -21,17 +21,10 @@ public class Guest {
 	private Owner owner;
 	private List<GuestEntry> guests=new ArrayList<>();
 	
-	
-	
-	
-	
-
-	
-
-	public Guest(int guest_id, String mobile_num, String first_name, String last_name, String address, String email,
+	public Guest( String mobile_num, String first_name, String last_name, String address, String email,
 			Security security_id, Owner owner, List<GuestEntry> guests) {
 		super();
-		this.guest_id = guest_id;
+		//this.guest_id = guest_id;
 		this.mobile_num = mobile_num;
 		this.first_name = first_name;
 		this.last_name = last_name;
