@@ -14,30 +14,32 @@ public class Owner {
 	private String first_name;
 	private String last_name;
 	private String mobile_no;
+	private String password;
+	private String email;
 	private String role;
 	private List<Vehicle> Vehicles=new ArrayList<>();
 	private List<Security> Security=new ArrayList<>();
 	private List<Guest> guest=new ArrayList<>();
 	
-	
-	
-
 
 	
 
 
-	public Owner(int owner_id, String flat_no, String first_name, String last_name, String mobile_no, String role,
-			List<Vehicle> vehicles, List<com.app.pojos.Security> security /*List<Guest> guest*/) {
+	public Owner(int owner_id, String flat_no, String first_name, String last_name, String mobile_no, String password,
+			String email, String role, List<Vehicle> vehicles, List<com.app.pojos.Security> security,
+			List<Guest> guest) {
 		super();
 		this.owner_id = owner_id;
 		this.flat_no = flat_no;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.mobile_no = mobile_no;
+		this.password = password;
+		this.email = email;
 		this.role = role;
 		Vehicles = vehicles;
 		Security = security;
-		//this.guest = guest;
+		this.guest = guest;
 	}
 
 
@@ -147,13 +149,35 @@ public class Owner {
 	}
 
 
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Owner [owner_id=" + owner_id + ", flat_no=" + flat_no + ", first_name=" + first_name + ", last_name="
-				+ last_name + ", mobile_no=" + mobile_no + ", role=" + role + ", Vehicles=" + Vehicles + ", Security="
-				+ Security + ", guest=" + guest + "]";
+				+ last_name + ", mobile_no=" + mobile_no + ", password=" + password + ", email=" + email + ", role="
+				+ role + ", Vehicles=" + Vehicles + ", Security=" + Security + ", guest=" + guest + "]";
 	}
 
+
+	
 
 	
 

@@ -22,6 +22,8 @@ public class Security {
 	private String last_name;
 	private String address;
 	private String mobile_numb;
+	private String password;
+	private String email;
 	private Owner saheb;
 	private List<Guest> guest=new ArrayList<>();
 	private List<GuestEntry> guestsEntry=new ArrayList<>();
@@ -38,19 +40,25 @@ public class Security {
 
 
 
-	public Security(int id, String first_name, String last_name, String address, String mobile_numb, Owner saheb,
-			List<Guest> guest, List<GuestEntry> guestsEntry, List<Suppliers> supplier) {
+	public Security(int id, String first_name, String last_name, String address, String mobile_numb, String password,
+			String email, Owner saheb, List<Guest> guest, List<GuestEntry> guestsEntry, List<Suppliers> supplier) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.address = address;
 		this.mobile_numb = mobile_numb;
+		this.password = password;
+		this.email = email;
 		this.saheb = saheb;
 		this.guest = guest;
 		this.guestsEntry = guestsEntry;
 		Supplier = supplier;
 	}
+
+
+
+
 
 
 
@@ -173,13 +181,45 @@ public class Security {
 
 
 
+	public String getPassword() {
+		return password;
+	}
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Security [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", address=" + address
-				+ ", mobile_numb=" + mobile_numb + ", saheb=" + saheb + ", guest=" + guest + ", guestsEntry="
-				+ guestsEntry + ", Supplier=" + Supplier + "]";
+				+ ", mobile_numb=" + mobile_numb + ", password=" + password + ", email=" + email + ", saheb=" + saheb
+				+ ", guest=" + guest + ", guestsEntry=" + guestsEntry + ", Supplier=" + Supplier + "]";
 	}
 
+
+
+
+	
 
 
 

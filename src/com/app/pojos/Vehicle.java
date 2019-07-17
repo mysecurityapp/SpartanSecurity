@@ -62,6 +62,7 @@ public class Vehicle {
 		return "Vehicle [Vehicle_no=" + Vehicle_no + ", Vehicle_type=" + Vehicle_type + ", malik=" + malik + "]";
 	}
 
+
 	
 	
 	
