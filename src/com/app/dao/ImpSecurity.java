@@ -27,7 +27,7 @@ public class ImpSecurity implements ISecurity {
 
 	@Override
 	public Security validateSecurity(String email, String password) {
-		String jpql="select v from Owner v where v.email=:em and v.password=:ps";
+		String jpql="select v from Security v where v.email=:em and v.password=:ps";
 		return sf.getCurrentSession().createQuery(jpql,Security.class)
 				.setParameter("em", email).setParameter("ps", password)
 				.getSingleResult();
