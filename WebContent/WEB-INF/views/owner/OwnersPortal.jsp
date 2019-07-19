@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>
-		<a href="owner/login">User Login</a>
-	</h4>
+<h1>im owner</h1>
 </body>
 </html>

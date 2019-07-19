@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dao.ISecurity;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+
 @Service
 @Transactional
 public class ImpSecurityService implements ISecurityService{
@@ -25,6 +28,44 @@ public class ImpSecurityService implements ISecurityService{
 		// TODO Auto-generated method stub
 		return dao.validateSecurity(email, password);
 	}
+
+	@Override
+	public String registerSecurites(Security v) {
+		// TODO Auto-generated method stub
+		return dao.registerSecurity(v);
+	}
+
+	@Override
+	public Security getSecurityDetails(int id) {
+		// TODO Auto-generated method stub
+		return dao.getSecurityDetails(id);
+	}
+
+	@Override
+	public List<Security> listSecurity() {
+		// TODO Auto-generated method stub
+		return dao.listSecurity();
+	}
+
+	@Override
+	public String updateSecuirty(Security v) {
+		// TODO Auto-generated method stub
+		return dao.updateSecurityDetails(v);
+	}
+
+	@Override
+	public String registerOwner(Owner v) {
+		// TODO Auto-generated method stub
+		return dao.registerOwner(v);
+	}
+
+	@Override
+	public List<Owner> listOwner() {
+		// TODO Auto-generated method stub
+		return dao.listOwner();
+	}
+
+
 
 	
 	

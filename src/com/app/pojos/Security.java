@@ -64,6 +64,24 @@ public class Security {
 
 
 
+	public Security(String first_name, String last_name, String address, String mobile_numb, String password,
+			String email, Owner own,int ownid) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.mobile_numb = mobile_numb;
+		this.password = password;
+		this.email = email;
+		this.saheb=own;
+		saheb.setOwner_id(ownid);
+		
+		
+	}
+
+
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
@@ -132,7 +150,7 @@ public class Security {
 
 	
 
-	@OneToMany(mappedBy = "security_id",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "security_id",cascade=CascadeType.ALL,fetch =FetchType.LAZY)
 	public List<Guest> getGuest() {
 		return guest;
 	}
@@ -148,7 +166,7 @@ public class Security {
 
 
 
-	@OneToMany(mappedBy = "securityid",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "securityid",cascade=CascadeType.ALL,fetch =FetchType.LAZY)
 	public List<GuestEntry> getGuestsEntry() {
 		return guestsEntry;
 	}
@@ -166,7 +184,7 @@ public class Security {
 	
 	
 
-	@OneToMany(mappedBy = "secID",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "secID",cascade=CascadeType.ALL,fetch =FetchType.LAZY)
 	public List<Suppliers> getSupplier() {
 		return Supplier;
 	}

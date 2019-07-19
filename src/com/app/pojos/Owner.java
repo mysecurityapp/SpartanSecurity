@@ -47,6 +47,21 @@ public class Owner {
 		super();
 	}
 
+	
+	
+
+	public Owner(String flat_no, String first_name, String last_name, String mobile_no, String password, String email,
+			String role) {
+		super();
+		this.flat_no = flat_no;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.mobile_no = mobile_no;
+		this.password = password;
+		this.email = email;
+		this.role = role;
+	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -113,7 +128,7 @@ public class Owner {
 
 
 
-	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL,fetch =FetchType.LAZY)
 	 public List<Vehicle> getVehicles() {
 		return Vehicles;
 	}
@@ -125,7 +140,7 @@ public class Owner {
 
 
 
-	@OneToMany(mappedBy = "saheb",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "saheb",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	public List<Security> getSecurity() {
 		return Security;
 	}
