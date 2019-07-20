@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Vehicle;
 
 
 
@@ -17,4 +18,6 @@ public interface ISecurityService {
 	String updateSecuirty(Security v);
 	String registerOwner(Owner v);
 	List<Owner> listOwner();
+	String registerVehicle(Vehicle v);
+	List<Vehicle> listVehicle();
 }

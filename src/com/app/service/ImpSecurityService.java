@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dao.ISecurity;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Vehicle;
 
 @Service
 @Transactional
@@ -63,6 +64,18 @@ public class ImpSecurityService implements ISecurityService{
 	public List<Owner> listOwner() {
 		// TODO Auto-generated method stub
 		return dao.listOwner();
+	}
+
+	@Override
+	public String registerVehicle(Vehicle v) {
+		// TODO Auto-generated method stub
+		return dao.registerVehicle(v);
+	}
+
+	@Override
+	public List<Vehicle> listVehicle() {
+		// TODO Auto-generated method stub
+		return dao.listVehicle();
 	}
 
 

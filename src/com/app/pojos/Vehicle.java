@@ -18,6 +18,15 @@ public class Vehicle {
 		this.malik = malik;
 	}
 
+	public Vehicle(String vehicle_no, String vehicle_type, Owner malik,int id) {
+		super();
+		Vehicle_no = vehicle_no;
+		Vehicle_type = vehicle_type;
+		this.malik = malik;
+		malik.setOwner_id(id);
+	}
+
+	
 
 	public Vehicle() {
 		super();

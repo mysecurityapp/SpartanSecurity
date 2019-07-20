@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Vehicle;
 
 
 
@@ -73,6 +74,20 @@ public class ImpSecurity implements ISecurity {
 	public List<Owner> listOwner() {
 		String jpql = "select v from Owner v";
 		return sf.getCurrentSession().createQuery(jpql,Owner.class)
+		.getResultList();
+	}
+
+	@Override
+	public String registerVehicle(Vehicle v) {
+		sf.getCurrentSession().persist(v); //persistent
+		//	sf.getCurrentSession().save(v);
+			return "Vehicle detials inserted for id"+v.getVehicle_no();
+	}
+
+	@Override
+	public List<Vehicle> listVehicle() {
+		String jpql = "select v from Vehicle v";
+		return sf.getCurrentSession().createQuery(jpql,Vehicle.class)
 		.getResultList();
 	}
 	

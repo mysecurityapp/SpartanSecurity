@@ -128,7 +128,7 @@ public class Owner {
 
 
 
-	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL,fetch =FetchType.LAZY)
+	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL)
 	 public List<Vehicle> getVehicles() {
 		return Vehicles;
 	}
@@ -140,7 +140,7 @@ public class Owner {
 
 
 
-	@OneToMany(mappedBy = "saheb",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "saheb",cascade=CascadeType.ALL)
 	public List<Security> getSecurity() {
 		return Security;
 	}

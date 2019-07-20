@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.pojos.Owner;
 
+import com.app.pojos.Vehicle;
 import com.app.service.ISecurityService;
 
 @Controller
@@ -61,6 +63,30 @@ public class OwnerController {
 			return "/user/login";
 		}
 		
+		
+		
+		}
+	@GetMapping("/vehicle")
+	public String showVechileForm(Vehicle V) {
+		System.out.println("in vehicle login form");
+		return "/owner/vehicleReg";
+		}
+	
+	
+	
+	@PostMapping("/vehicle") // =@RequestMapping + method=post
+	public String processRegisterForm(Vehicle v,RedirectAttributes flashMap,HttpSession hs) {
+		
+		
+		Owner own=(Owner) hs.getAttribute("user_dtls");
+		Vehicle sc=new Vehicle(v.getVehicle_no(),v.getVehicle_type(),own);
+		
+		System.out.println("in process registration form"+v);
+		//v--transient
+		flashMap.addFlashAttribute("status", sf.registerVehicle(sc));
+		return "redirect:/owner/vehicle";
+
+	}
 	
 
-}}
+}

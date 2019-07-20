@@ -74,9 +74,9 @@ public class AdminsController {
 	public String showUpdateForm(@RequestParam int vid,Model map)
 	{
 	System.out.println("in show get form");
-	map.addAttribute("vendor",sf.getSecurityDetails(vid));
+	map.addAttribute("security",sf.getSecurityDetails(vid));
 	System.out.println(map);
-	return "/security/update";
+	return "/security/updateSecForm";
 	}
 	
 	@PostMapping("/updateSec")
@@ -122,10 +122,22 @@ public class AdminsController {
 	@GetMapping("/listOwner")
 	public String showOwnerList(Model map) {
 		System.out.println("in list vendor");
-		// save vendor under model map
+		
 		map.addAttribute("vendor_list", sf.listOwner());
-		return "/owner/ownerDetails"; // forward view name
+		
+		return "/owner/ownerDetails"; 
 	}
+	
+
+	@GetMapping("/listVehicle")
+	public String showVehicleList(Model map) {
+		System.out.println("in list Vehicle");
+		
+		map.addAttribute("vehicle_list", sf.listVehicle());
+		
+		return "/admin/VehicleDetails";
+	}
+	
 	
 	
 }

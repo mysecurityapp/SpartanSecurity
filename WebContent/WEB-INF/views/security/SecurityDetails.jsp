@@ -25,7 +25,7 @@
 				<td>${v.saheb.owner_id}</td>
 				<td>${v.mobile_numb}</td>
 				<td><a href="<spring:url value='/admins/updateSec?vid=${v.id}'/>">Update</a></td>
-				<td><a href="<spring:url value='/admin/delete?vid=${v.id}'/>">Delete</a></td>
+			
 
 			</tr>
 		</c:forEach>
