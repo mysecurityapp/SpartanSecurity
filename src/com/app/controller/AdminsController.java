@@ -74,9 +74,9 @@ public class AdminsController {
 	public String showUpdateForm(@RequestParam int vid,Model map)
 	{
 	System.out.println("in show get form");
-	map.addAttribute("vendor",sf.getSecurityDetails(vid));
+	map.addAttribute("security",sf.getSecurityDetails(vid));
 	System.out.println(map);
-	return "/security/update";
+	return "/security/updateSecForm";
 	}
 	
 	@PostMapping("/updateSec")
