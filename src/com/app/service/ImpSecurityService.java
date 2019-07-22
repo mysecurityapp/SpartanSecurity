@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.ISecurity;
+import com.app.pojos.Guest;
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
 import com.app.pojos.Vehicle;
@@ -28,6 +30,23 @@ public class ImpSecurityService implements ISecurityService{
 	public Security validateSecuritys(String email, String password) {
 		// TODO Auto-generated method stub
 		return dao.validateSecurity(email, password);
+	}
+
+	@Override
+	public String registerGuest(Guest g) {
+		// TODO Auto-generated method stub
+		return dao.registerGuest(g);
+	}
+	@Override
+	public String registerGuestEntry(GuestEntry g) {
+		// TODO Auto-generated method stub
+		return dao.registerGuestEntry(g);
+	}
+	
+	@Override
+	public String checkOut(String mobNo) {
+		// TODO Auto-generated method stub
+		return dao.checkout(mobNo);
 	}
 
 	@Override

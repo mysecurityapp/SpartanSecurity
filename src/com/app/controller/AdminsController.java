@@ -135,7 +135,7 @@ public class AdminsController {
 		
 		map.addAttribute("vehicle_list", sf.listVehicle());
 		
-		return "/admin/VehicleDetails";
+		return "/admin/VehicleDetas";
 	}
 	
 	

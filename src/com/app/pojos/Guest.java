@@ -20,7 +20,7 @@ public class Guest {
 	private List<GuestEntry> guests=new ArrayList<>();
 	
 	public Guest( String mobile_num, String first_name, String last_name, String address, String email,
-			Security security_id, Owner owner, List<GuestEntry> guests) {
+			Security security_id) {
 		super();
 		//this.guest_id = guest_id;
 		this.mobile_num = mobile_num;
@@ -29,8 +29,8 @@ public class Guest {
 		this.address = address;
 		this.email = email;
 		this.security_id = security_id;
-		this.owner = owner;
-		this.guests = guests;
+		//this.owner = owner;
+		//this.guests = guests;
 	}
 	
 

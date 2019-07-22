@@ -2,6 +2,8 @@ package com.app.dao;
 
 import java.util.List;
 
+import com.app.pojos.Guest;
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
 import com.app.pojos.Vehicle;
@@ -20,5 +22,8 @@ public interface ISecurity {
 	List<Owner> listOwner();
 	String registerVehicle(Vehicle v);
 	List<Vehicle> listVehicle();
+	String registerGuest(Guest g);
+	String registerGuestEntry(GuestEntry g);
+	String checkout(String mobileNo);
 	
 }

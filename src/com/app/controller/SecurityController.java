@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.pojos.Guest;
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Security;
 import com.app.pojos.Vendor;
 import com.app.service.ISecurityService;
@@ -70,15 +73,104 @@ public class SecurityController {
 	
 
 	@GetMapping("/register")
-	public String showRegistrationForm(Vendor v) {
+	public String showRegistrationForm() {
 		//Vendor v=new Vendor();
 		//SC will invoke getters to bind POJO data to form
 		//map.addAttribute("vendor",v); //derived name
-		System.out.println("in show registr form"+v);
+		System.out.println("in show registr form");
 		
-		return "/admin/register";  //forward to reg form
+		return "/security/register";  //forward to reg form
 	}
+	
+	@GetMapping("/checkout")
+	public String checkout() {
+		//Vendor v=new Vendor();
+		//SC will invoke getters to bind POJO data to form
+		//map.addAttribute("vendor",v); //derived name
+		System.out.println("in show registr form");
+		
+		return "/security/checkout";  //forward to reg form
+	}
+	@PostMapping("/checkout") // =@RequestMapping + method=post
+	public String processCheckOut(Model map
+			, 
+			@RequestParam String mobile,
+			HttpSession hs,RedirectAttributes flashMap
+			) {
+		System.out.println("in register guest");
+		
+		try {
+		service.checkOut(mobile);
+		map.addAttribute("checkout", "Guest checked out successfully");
+			
+			return "/security/checkout";
+		} catch (RuntimeException e) {
+			System.out.println("err in user controller " + e);
+			// invalid login
+			// add err mesg as model attribute ---req scope
+			map.addAttribute("checkout", "Guest is not registered..!!");
+			e.printStackTrace();
+			return "/security/checkout";
+		}
+		
 
+	}
+	
+	@GetMapping("/dashboard")
+	public String showDashboard() {
+		//Vendor v=new Vendor();
+		//SC will invoke getters to bind POJO data to form
+		//map.addAttribute("vendor",v); //derived name
+		System.out.println("in show registr form");
+		
+		return "/security/dashboard";  //forward to reg form
+	}
+	
+	@PostMapping("/register") // =@RequestMapping + method=post
+	public String processRegistrationForm(Model map
+			, 
+			@RequestParam String fname,
+			@RequestParam String lname,
+			@RequestParam String email,
+			@RequestParam String mobile,
+			@RequestParam String address,
+//			@RequestParam Date inTime,
+//			@RequestParam Date outTime,
+			@RequestParam String vehicleNo,
+			@RequestParam String flatNo,
+			HttpSession hs,RedirectAttributes flashMap
+			) {
+		System.out.println("in register guest");
+		
+		try {
+			// invoke service layer method
+			Security s = (Security) hs.getAttribute("sec_dtls");
+			Guest guest = new Guest(mobile, fname, lname, address, email, s);
+			Date date=new Date();
+			System.out.println("date::"+date);
+			GuestEntry g=new GuestEntry(vehicleNo, date, date, s , flatNo, guest);
+			flashMap.addFlashAttribute("status", service.registerGuest(guest));
+			flashMap.addFlashAttribute("sts", service.registerGuestEntry(g));
+			// login success
+			
+			// store user details under session scope
+			
+			// chk role
+			
+			// vendor login
+			
+			return "redirect:/security/dashboard";
+		} catch (RuntimeException e) {
+			System.out.println("err in user controller " + e);
+			// invalid login
+			// add err mesg as model attribute ---req scope
+			map.addAttribute("status", "Invalid Login , Pls retry!!!!");
+			e.printStackTrace();
+			return "/user/login";
+		}
+		
+
+	}
 	@PostMapping("/add") // =@RequestMapping + method=post
 	public String processRegisterForm(Guest g,RedirectAttributes flashMap) {
 		//Vendor v = new Vendor();

@@ -23,7 +23,7 @@ public class GuestEntry{
 	
 
 
-	public GuestEntry(int entry_id, String vehicle_no, Security security, Date in_Time, Date out_Time,
+	public GuestEntry( String vehicle_no, Date in_Time, Date out_Time,
 			Security securityid, String flat_no, Guest athithi) {
 		super();
 		this.entry_id = entry_id;

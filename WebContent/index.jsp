@@ -16,9 +16,7 @@
 		</p>
 
 		
-			
-		<a href="owner/login">Owner Login</a><br><br><br>
-		<a href="security/login">Security Login</a><br><br><br>
+		
 		
 
 

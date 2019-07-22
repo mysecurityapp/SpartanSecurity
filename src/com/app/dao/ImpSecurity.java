@@ -1,11 +1,16 @@
 package com.app.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.app.pojos.Guest;
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
 import com.app.pojos.Vehicle;
@@ -25,13 +30,42 @@ public class ImpSecurity implements ISecurity {
 				.setParameter("em", email).setParameter("ps", password)
 				.getSingleResult();
 	}
+	
+	@Override
+	public String registerGuest(Guest g) {
+		sf.getCurrentSession().save(g); //persistent
+		//	sf.getCurrentSession().save(v);
+			return "Security detials inserted for id"+g.getGuest_id();
+	}
+	@Override
+	public String registerGuestEntry(GuestEntry g) {
+		sf.getCurrentSession().save(g); //persistent
+		//	sf.getCurrentSession().save(v);
+			return "Security detials inserted for id"+g.getEntry_id();
+	}
 
 	@Override
 	public Security validateSecurity(String email, String password) {
 		String jpql="select v from Security v where v.email=:em and v.password=:ps";
+		
 		return sf.getCurrentSession().createQuery(jpql,Security.class)
 				.setParameter("em", email).setParameter("ps", password)
 				.getSingleResult();
+	}
+	
+	@Override
+	public String checkout(String mobileNo) {
+		String jpql="select g from GuestEntry g where GuestID=(select v.guest_id from Guest v where v.mobile_num=:mb) ";
+		GuestEntry g = sf.getCurrentSession().createQuery(jpql,GuestEntry.class)
+		.setParameter("mb", mobileNo)
+		.getSingleResult();
+		Date d=new Date();
+		Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println( sdf.format(cal.getTime()) );
+		g.setOut_Time(cal.getTime());
+		sf.getCurrentSession().update(g);
+		return "User checkedout successfully..!!";
 	}
 
 	@Override
