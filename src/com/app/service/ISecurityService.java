@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
 import com.app.pojos.Vehicle;
@@ -20,4 +21,7 @@ public interface ISecurityService {
 	List<Owner> listOwner();
 	String registerVehicle(Vehicle v);
 	List<Vehicle> listVehicle();
+	List<Vehicle> ownersVehicle(int id);
+	List<GuestEntry> VisitorsDetails(String flat_no);
+	List<GuestEntry> VisitorsDetailsByDate(String date);
 }

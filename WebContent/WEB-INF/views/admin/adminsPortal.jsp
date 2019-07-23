@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p align="center">
 <h4>Last action status: ${requestScope.status}</h4>
 	<h3>Admin Portal</h3>
 	<table style="background-color: cyan; margin: auto;">
@@ -29,7 +30,14 @@
 	<h5>
 		<a href="<spring:url value='/admins/listVehicle'/>">  Vehicle list</a>
 	</h5>
+	<h5>
+		<a href="<spring:url value='/owner/vehicle'/>">Add My Vehicle</a>
+	</h5>
+	<h5>
+		<a href="<spring:url value='/owner/OwnersVisitors'/>">Show my visitors</a>
+	</h5>
 	
+	</p>
 
 </body>
 </html>

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1 align ="center">Security Registration Form</h1>
 	<sf:form  method="post" modelAttribute="security">
 		<table style="background-color: pink; margin: auto;">
 

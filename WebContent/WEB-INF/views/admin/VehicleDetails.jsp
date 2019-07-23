@@ -9,18 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Last action status: ${requestScope.status}</h4>
-	<h3>Vendor List</h3>
+
+	<h3>Vehicle List</h3>
 	<table style="background-color: cyan; margin: auto;">
 		<c:forEach var="v" items="${requestScope.vehicle_list}">
 
 			<tr>
-				<td>${v.Vehicle_no}</td>
-				<td>${v.Vehicle_type}</td>  
+				<td>${v.vehicle_no}</td>
+				<td>${v.vehicle_type}</td>  
 				<td>${v.malik.owner_id}</td>
 				
-				<%-- <td><a href="<spring:url value='/admin/update?vid=${v.id}'/>">Update</a></td>
-				<td><a href="<spring:url value='/admin/delete?vid=${v.id}'/>">Delete</a></td> --%>
 
 			</tr>
 		</c:forEach>

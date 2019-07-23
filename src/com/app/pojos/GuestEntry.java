@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 @Entity
@@ -13,6 +15,7 @@ public class GuestEntry{
 	private int entry_id;
 	private String Vehicle_no;
 	//private Security security;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date in_Time;
 	private Date out_Time;
 	private Security securityid;
@@ -23,12 +26,19 @@ public class GuestEntry{
 	
 
 
+	public GuestEntry(Date in_Time) {
+		super();
+		this.in_Time = in_Time;
+	}
+
+
 	public GuestEntry(int entry_id, String vehicle_no, Security security, Date in_Time, Date out_Time,
 			Security securityid, String flat_no, Guest athithi) {
 		super();
 		this.entry_id = entry_id;
 		Vehicle_no = vehicle_no;
 		//this.security = security;
+		
 		this.in_Time = in_Time;
 		this.out_Time = out_Time;
 		this.securityid = securityid;
@@ -74,7 +84,7 @@ public class GuestEntry{
 //	}
 
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP )
 	public Date getIn_Time() {
 		return in_Time;
 	}
@@ -85,7 +95,7 @@ public class GuestEntry{
 	}
 
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getOut_Time() {
 		return out_Time;
 	}

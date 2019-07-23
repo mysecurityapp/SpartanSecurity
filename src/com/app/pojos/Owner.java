@@ -128,7 +128,7 @@ public class Owner {
 
 
 
-	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "malik",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	 public List<Vehicle> getVehicles() {
 		return Vehicles;
 	}

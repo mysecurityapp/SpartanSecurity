@@ -64,8 +64,8 @@ public class AdminsController {
 	
 	@GetMapping("/list")
 	public String showSecurityList(Model map) {
-		System.out.println("in list vendor");
-		// save vendor under model map
+		System.out.println("in list security");
+		
 		map.addAttribute("vendor_list", sf.listSecurity());
 		return "/security/SecurityDetails"; // forward view name
 	}
@@ -135,7 +135,7 @@ public class AdminsController {
 		
 		map.addAttribute("vehicle_list", sf.listVehicle());
 		
-		return "/admin/VehicleDetails";
+		return "/admin/vehicleDetails";
 	}
 	
 	

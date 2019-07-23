@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<h1 align ="center">Owner Registration Form</h1>
 	<sf:form  method="post" modelAttribute="vendor">
 		<table style="background-color: pink; margin: auto;">
 
