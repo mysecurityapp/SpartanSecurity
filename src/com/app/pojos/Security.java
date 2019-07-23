@@ -29,16 +29,9 @@ public class Security {
 	private List<GuestEntry> guestsEntry=new ArrayList<>();
 	private List<Suppliers> Supplier=new ArrayList<>();
 	
-	
-	
-
-
 	public Security() {
 		super();
 	}
-
-
-
 
 	public Security(int id, String first_name, String last_name, String address, String mobile_numb, String password,
 			String email, Owner saheb, List<Guest> guest, List<GuestEntry> guestsEntry, List<Suppliers> supplier) {
@@ -79,27 +72,19 @@ public class Security {
 		
 	}
 
-
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
 
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getFirst_name() {
 		return first_name;
 	}
-
 
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;

@@ -52,8 +52,13 @@ public class SecurityController {
 			Security v = service.validateSecuritys(email, password);
 			// login success
 			map.addAttribute("status", "Login Successful....");
+			
 			// store user details under session scope
 			hs.setAttribute("sec_dtls", v);
+			
+//			Security a = (Security) map.asMap().get("sec_dtls");
+//			System.out.println("ab--------------"+a.getFirst_name());
+			
 			// chk role
 			
 			// vendor login
@@ -78,6 +83,7 @@ public class SecurityController {
 		//SC will invoke getters to bind POJO data to form
 		//map.addAttribute("vendor",v); //derived name
 		System.out.println("in show registr form");
+		
 		
 		return "/security/register";  //forward to reg form
 	}
@@ -196,6 +202,7 @@ public class SecurityController {
 		System.out.println("in user logout");
 		//save user dtls from session scope ---> request scope
 		map.addAttribute("dtls",hs.getAttribute("user_dtls"));
+		
 		//invalidate user's session
 		hs.invalidate();
 		//navigate the clnt to index page after slight dly

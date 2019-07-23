@@ -70,7 +70,7 @@ public class OwnerController {
 	public String showVechileForm(Vehicle V) {
 		System.out.println("in vehicle login form");
 		return "/owner/vehicleReg";
-		}
+	}
 	
 	
 	

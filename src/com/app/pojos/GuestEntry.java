@@ -74,7 +74,7 @@ public class GuestEntry{
 //	}
 
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getIn_Time() {
 		return in_Time;
 	}
@@ -85,7 +85,7 @@ public class GuestEntry{
 	}
 
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getOut_Time() {
 		return out_Time;
 	}

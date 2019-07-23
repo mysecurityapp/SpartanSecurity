@@ -59,6 +59,7 @@ public class ImpSecurity implements ISecurity {
 		GuestEntry g = sf.getCurrentSession().createQuery(jpql,GuestEntry.class)
 		.setParameter("mb", mobileNo)
 		.getSingleResult();
+		System.out.println("details:"+g.getAthithi().getMobile_num() + "::"+g.getAthithi().getAddress());
 		Date d=new Date();
 		Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
