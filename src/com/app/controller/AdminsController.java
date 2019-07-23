@@ -58,6 +58,7 @@ public class AdminsController {
 		System.out.println("in process registration form"+v);
 		//v--transient
 		flashMap.addFlashAttribute("status", sf.registerSecurites(sc));
+		
 		return "redirect:/admins/list";
 
 	}
@@ -75,7 +76,7 @@ public class AdminsController {
 	{
 	System.out.println("in show get form");
 	map.addAttribute("security",sf.getSecurityDetails(vid));
-	System.out.println(map);
+	//System.out.println(map);
 	return "/security/updateSecForm";
 	}
 	
@@ -135,7 +136,11 @@ public class AdminsController {
 		
 		map.addAttribute("vehicle_list", sf.listVehicle());
 		
+<<<<<<< HEAD
 		return "/admin/vehicleDetails";
+=======
+		return "/admin/VehicleDetas";
+>>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
 	}
 	
 	

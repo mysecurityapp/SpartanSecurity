@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
+<%-- 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,55 +8,54 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<sf:form  method="post" modelAttribute="security">
+	<form method="post" action="register">
 		<table style="background-color: pink; margin: auto;">
 
 			<tr>
 				<td>Enter First Name</td>
-				<td><sf:input type="text" path="fname" /></td>
+				<td><input type="text" name="fname" /></td>
 			</tr>
 			<tr>
 				<td>Enter Last Name</td>
-				<td><sf:input type="text" path="lname" /></td>
+				<td><input type="text" name="lname" /></td>
 			</tr>
 			<tr>
 				<td>Enter User Email</td>
 				
-				<td><sf:input type="text" path="email" /></td>
+				<td><input type="text" name="email" /></td>
 				
 			</tr>
 			<tr>
-				<td>Enter User Role</td>
-				<!-- <td><sf:radiobutton value="admin" path="role"/><td/>
-				<td><sf:radiobutton value="vendor" path="role"/><td/> -->
-				<td><sf:input type="text" path="role" /></td>
+				<td>Enter Mobile no</td>
+				<td><input type="text" name="mobile" /></td>
+			</tr>
+			
+			<tr>
+				<td>Enter Guest Address</td>
+				<td><input type="text" name="address" /></td>
+			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>Choose In Time</td> -->
+<!-- 				<td><input type="date" name="inTime" /></td> -->
+<!-- 			</tr> -->
+<!-- 				<tr> -->
+<!-- 				<td>Choose Out Time</td> -->
+<!-- 				<td><input type="date" name="outTime" /></td> -->
+<!-- 			</tr> -->
+			<tr>
+				<td>Enter Vehicle No</td>
+				<td><input type="text" name="vehicleNo" /></td>
 			</tr>
 			<tr>
-				<td>Enter Password</td>
-				<td><sf:password path="password" /></td>
+				<td>Enter Flat No</td>
+				<td><input type="text" name="flatNo" /></td>
 			</tr>
 			<tr>
-				<td>Enter Reg Amount</td>
-				<td><sf:input type="number" path="regAmount" /></td>
-			</tr>
-			<tr>
-				<td>Choose Reg Date</td>
-				<td><sf:input type="date" path="regDate" /></td>
-			</tr>
-			<tr>
-				<td>Enter User Phone No</td>
-				<td><sf:input type="text" path="phoneNo" /></td>
-			</tr>
-			<tr>
-				<td>Enter User City</td>
-				<td><sf:input type="text" path="city" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Register Vendor" /></td>
+				<td><input type="submit" value="Register Guest" /></td>
 			</tr>
 
 		</table>
-	</sf:form>
+	</form>
 
 
 </body>

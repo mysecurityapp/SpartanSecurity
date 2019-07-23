@@ -26,6 +26,7 @@ public class GuestEntry{
 	
 
 
+<<<<<<< HEAD
 	public GuestEntry(Date in_Time) {
 		super();
 		this.in_Time = in_Time;
@@ -33,6 +34,9 @@ public class GuestEntry{
 
 
 	public GuestEntry(int entry_id, String vehicle_no, Security security, Date in_Time, Date out_Time,
+=======
+	public GuestEntry( String vehicle_no, Date in_Time, Date out_Time,
+>>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
 			Security securityid, String flat_no, Guest athithi) {
 		super();
 		this.entry_id = entry_id;
@@ -84,7 +88,11 @@ public class GuestEntry{
 //	}
 
 
+<<<<<<< HEAD
 	@Temporal(TemporalType.TIMESTAMP )
+=======
+	@Temporal(TemporalType.TIMESTAMP)
+>>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
 	public Date getIn_Time() {
 		return in_Time;
 	}
