@@ -17,6 +17,7 @@ public class GuestEntry{
 	//private Security security;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date in_Time;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date out_Time;
 	private Security securityid;
 	private String flat_no;
@@ -26,20 +27,16 @@ public class GuestEntry{
 	
 
 
-<<<<<<< HEAD
 	public GuestEntry(Date in_Time) {
 		super();
 		this.in_Time = in_Time;
 	}
 
 
-	public GuestEntry(int entry_id, String vehicle_no, Security security, Date in_Time, Date out_Time,
-=======
-	public GuestEntry( String vehicle_no, Date in_Time, Date out_Time,
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
-			Security securityid, String flat_no, Guest athithi) {
+
+	public GuestEntry( String vehicle_no, Date in_Time, Date out_Time,Security securityid, String flat_no, Guest athithi) {
 		super();
-		this.entry_id = entry_id;
+		//this.entry_id = entry_id;
 		Vehicle_no = vehicle_no;
 		//this.security = security;
 		
@@ -88,11 +85,8 @@ public class GuestEntry{
 //	}
 
 
-<<<<<<< HEAD
+
 	@Temporal(TemporalType.TIMESTAMP )
-=======
-	@Temporal(TemporalType.TIMESTAMP)
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
 	public Date getIn_Time() {
 		return in_Time;
 	}

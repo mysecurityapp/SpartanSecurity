@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.ISecurity;
-<<<<<<< HEAD
-=======
+
 import com.app.pojos.Guest;
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
@@ -115,9 +115,27 @@ public class ImpSecurityService implements ISecurityService{
 	}
 
 	@Override
-	public List<GuestEntry> VisitorsDetailsByDate(String date) {
+	public List<GuestEntry> VisitorsDetailsByDate(String date,String flatno) throws ParseException {
 		// TODO Auto-generated method stub
-		return dao.VisitorsDetailsByDate(date);
+		return dao.VisitorsDetailsByDate(date,flatno);
+	}
+
+	@Override
+	public List<GuestEntry> AllVisitorsDetailsBetweenDate(String date, String date2) throws ParseException {
+		// TODO Auto-generated method stub
+		return dao.AllVisitorsDetailsBtweenDate(date, date2);
+	}
+
+	@Override
+	public Owner getOwnerDetails(int id) {
+		// TODO Auto-generated method stub
+		return dao.getOwnerDetails(id);
+	}
+
+	@Override
+	public String updateOwner(Owner v) {
+		// TODO Auto-generated method stub
+		return dao.updateOwnerDetails(v);
 	}
 
 

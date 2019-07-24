@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -125,18 +126,19 @@ public class OwnerController {
 	}
 	
 	@PostMapping("/ReportByDate") // =@RequestMapping + method=post
-	public String showVisitorsBydate(GuestEntry v,RedirectAttributes flashMap,HttpSession hs) {
+	public String showVisitorsBydate(GuestEntry v,Model Map,HttpSession hs) throws ParseException {
 		System.out.println("in post ReportByDate");
 		
 		Owner own=(Owner) hs.getAttribute("user_dtls");
+		String flat_no=own.getFlat_no();
 		Date sc=v.getIn_Time();
 		  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");  
           String strDate = dateFormat.format(sc);  
           System.out.println("Converted String: " + strDate);  
 		
-		System.out.println("in process registration form"+v);
+	
 		//v--transient
-		flashMap.addFlashAttribute("status", sf.VisitorsDetailsByDate(strDate));
+		Map.addAttribute("visitor_details_Bydate", sf.VisitorsDetailsByDate(strDate,flat_no));
 		return "/owner/VisitorBydate";
 
 	}

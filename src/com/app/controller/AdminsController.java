@@ -1,5 +1,10 @@
 package com.app.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
 
@@ -129,19 +135,68 @@ public class AdminsController {
 		return "/owner/ownerDetails"; 
 	}
 	
+	
+	@GetMapping("/updateOwn")
+	public String showUpdateFormOfOwner(@RequestParam int vid,Model map)
+	{
+	System.out.println("in show get form");
+	map.addAttribute("owner",sf.getOwnerDetails(vid));
+	//System.out.println(map);
+	return "/owner/updateOwnForm";
+	}
+	
+	@PostMapping("/updateOwn")
+	public String processUpdateOwnForm(Owner v,RedirectAttributes flashMap)
+	{
+	System.out.println("in process update form");
+	flashMap.addFlashAttribute("status", sf.updateOwner(v));
+	
+	return "redirect:/admins/listOwner";
+	}
+	
+	
+	
+	
 
 	@GetMapping("/listVehicle")
 	public String showVehicleList(Model map) {
 		System.out.println("in list Vehicle");
 		
 		map.addAttribute("vehicle_list", sf.listVehicle());
-		
-<<<<<<< HEAD
+
 		return "/admin/vehicleDetails";
-=======
-		return "/admin/VehicleDetas";
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 	}
+	
+	@GetMapping("/ReportBetweenDate")
+	public String showDateForm(GuestEntry v) {
+		System.out.println("in list ReportBetweenDate");
+		
+		
+		return "/admin/GuestReportBetweenDate"; // forward view name
+	}
+	
+	@PostMapping("/ReportBetweenDate") // =@RequestMapping + method=post
+	public String showVisitorsBydate(GuestEntry v,Model Map,HttpSession hs) throws ParseException {
+		System.out.println("in post ReportByDate");
+		
+		Owner own=(Owner) hs.getAttribute("user_dtls");
+		
+		Date sc=v.getIn_Time();
+		Date sc2=v.getOut_Time();
+		  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");  
+          String strDate = dateFormat.format(sc);  
+          String strDate1 = dateFormat.format(sc2);
+          System.out.println("Converted String: " + strDate);  
+		
+	
+		//v--transient
+		Map.addAttribute("visitor_details_Bydate", sf.AllVisitorsDetailsBetweenDate(strDate, strDate1));
+		return "/owner/VisitorBydate";
+
+	}
+	
+	
 	
 	
 	

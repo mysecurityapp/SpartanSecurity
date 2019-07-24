@@ -1,12 +1,12 @@
 package com.app.dao;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
+
 import com.app.pojos.Guest;
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
@@ -23,17 +23,19 @@ public interface ISecurity {
 	List<Security> listSecurity();
 	String updateSecurityDetails(Security v);
 	String registerOwner(Owner v);
+	String updateOwnerDetails(Owner v);
+	Owner getOwnerDetails(int vid);
 	List<Owner> listOwner();
 	String registerVehicle(Vehicle v);
 	List<Vehicle> listVehicle();
-<<<<<<< HEAD
+
 	List<Vehicle> OwnersVehicle(int id);
 	List<GuestEntry> VisitorsDetails(String flat_no);
-	List<GuestEntry> VisitorsDetailsByDate(String date);
-=======
+	List<GuestEntry> VisitorsDetailsByDate(String date,String flatno) throws ParseException;
+	List<GuestEntry> AllVisitorsDetailsBtweenDate(String date,String date2) throws ParseException;
 	String registerGuest(Guest g);
 	String registerGuestEntry(GuestEntry g);
 	String checkout(String mobileNo);
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 	
 }

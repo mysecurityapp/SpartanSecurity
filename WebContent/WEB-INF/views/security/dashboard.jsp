@@ -10,5 +10,8 @@
 <h1>SECURITY DASHBOARD</h1><br><br>
 <a href="register">Register Guest</a><br><br><br>
 <a href="checkout">Checkout Guest</a><br><br><br>
+
+
+	
 </body>
 </html>

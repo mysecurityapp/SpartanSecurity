@@ -1,10 +1,9 @@
 package com.app.dao;
 
-<<<<<<< HEAD
-=======
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,10 +11,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
-=======
 import com.app.pojos.Guest;
->>>>>>> 5da4c1c66535412a4d6d88a6c359540bf3af16b4
+
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
@@ -161,14 +158,57 @@ public class ImpSecurity implements ISecurity {
 	}
 
 	@Override
-	public List<GuestEntry> VisitorsDetailsByDate(String date) {
+	public List<GuestEntry> VisitorsDetailsByDate(String date,String flatno) throws ParseException {
 		// TODO Auto-generated method stub
 		System.out.println("in dao of Visitor list by date");
-		String jpql="select v from GuestEntry v where v.in_Time between :dt and :dt2";
-		return sf.getCurrentSession().createQuery(jpql,GuestEntry.class).setParameter("dt", date+" 00:00:01").setParameter("dt2", date+" 23:59:59")
-				.getResultList();
+		String sDate6 = date+"00:00:01";  
+		SimpleDateFormat formatter6=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		  Date date6=formatter6.parse(sDate6); 
+		  String sDate7 = date+"23:59:59";  
+			
+			  Date date7=formatter6.parse(sDate7); 
+		String jpql="select v from GuestEntry v where v.flat_no=:fno AND v.in_Time between :dt and :dt2  ";
+		 
+				List<GuestEntry> lst=sf.getCurrentSession().createQuery(jpql,GuestEntry.class).setParameter("dt", date6).setParameter("dt2", date7)
+						.setParameter("fno", flatno).getResultList();
+				System.out.println("in dao of bydate"+ lst.get(0).getAthithi().getFirst_name());
+				return lst;
+	
+
+}
+
+	@Override
+	public List<GuestEntry> AllVisitorsDetailsBtweenDate(String date, String date2) throws ParseException {
+		// TODO Auto-generated method stub
+		System.out.println("in dao of Visitor list between date");
+		String sDate6 = date+"00:00:01";  
+		SimpleDateFormat formatter6=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		  Date date6=formatter6.parse(sDate6); 
+		  String sDate7 = date2+"23:59:59";  
+			
+			  Date date7=formatter6.parse(sDate7); 
+		String jpql="select v from GuestEntry v where v.in_Time between :dt and :dt2  ";
+		 
+				List<GuestEntry> lst=sf.getCurrentSession().createQuery(jpql,GuestEntry.class).setParameter("dt", date6).setParameter("dt2", date7)
+						.getResultList();
+				System.out.println("in dao of bydate"+ lst.get(0).getAthithi().getFirst_name());
+				return lst;
+	}
+
+	@Override
+	public String updateOwnerDetails(Owner v) {
+	sf.getCurrentSession().update(v);  //v--persistent
 		
+		return "Owner detials updated for id:"+v.getOwner_id();
+	}
+
+	@Override
+	public Owner getOwnerDetails(int vid) {
+		// TODO Auto-generated method stub
+		return sf.getCurrentSession().get(Owner
+				.class, vid);
 	}
 	
+
 
 }

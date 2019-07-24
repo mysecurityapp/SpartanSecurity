@@ -24,8 +24,8 @@
 				<td>${v.email}</td>  
 				
 				<td>${v.role}</td>
-				<td><a href="<spring:url value='/admins/updateSec?vid=${v.owner_id}'/>">Update</a></td>
-				<td><a href="<spring:url value='/admin/delete?vid=${v.owner_id}'/>">Delete</a></td>
+				<td><a href="<spring:url value='/admins/updateOwn?vid=${v.owner_id}'/>">Update</a></td>
+				
 
 			</tr>
 		</c:forEach>

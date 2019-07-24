@@ -36,6 +36,9 @@
 	<h5>
 		<a href="<spring:url value='/owner/OwnersVisitors'/>">Show my visitors</a>
 	</h5>
+	<h5>
+		<a href="<spring:url value='/admins/ReportBetweenDate'/>">Show visitors between date</a>
+	</h5>
 	
 	</p>
 
