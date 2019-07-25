@@ -34,6 +34,21 @@ public class GuestEntry{
 
 
 
+	public GuestEntry(String vehicle_no, Date in_Time, Date out_Time, Security securityid,int ScID, String flat_no,
+			Guest athithi,int GID) {
+		super();
+		Vehicle_no = vehicle_no;
+		this.in_Time = in_Time;
+		this.out_Time = out_Time;
+		this.securityid = securityid;
+		securityid.setId(ScID);
+		this.flat_no = flat_no;
+		this.athithi = athithi;
+		athithi.setGuest_id(GID);
+	}
+
+
+
 	public GuestEntry( String vehicle_no, Date in_Time, Date out_Time,Security securityid, String flat_no, Guest athithi) {
 		super();
 		//this.entry_id = entry_id;

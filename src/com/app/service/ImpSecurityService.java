@@ -14,6 +14,7 @@ import com.app.pojos.Guest;
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Suppliers;
 import com.app.pojos.Vehicle;
 
 @Service
@@ -136,6 +137,30 @@ public class ImpSecurityService implements ISecurityService{
 	public String updateOwner(Owner v) {
 		// TODO Auto-generated method stub
 		return dao.updateOwnerDetails(v);
+	}
+
+	@Override
+	public String registerGuestbyOwner(Guest v) {
+		// TODO Auto-generated method stub
+		return dao.registerGuest(v);
+	}
+
+	@Override
+	public List<Suppliers> listSuppliers(String role) {
+		// TODO Auto-generated method stub
+		return dao.listSuppliers(role);
+	}
+
+	@Override
+	public Guest GetGuestDetail(String MobileNo) {
+		// TODO Auto-generated method stub
+		return dao.GetGuestDetail(MobileNo);
+	}
+
+	@Override
+	public String registerSuppliers(Suppliers v) {
+		// TODO Auto-generated method stub
+		return dao.registerSuppliers(v);
 	}
 
 

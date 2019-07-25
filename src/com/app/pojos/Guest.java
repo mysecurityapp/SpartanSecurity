@@ -33,6 +33,23 @@ public class Guest {
 		//this.guests = guests;
 	}
 	
+	
+	
+
+	public Guest(String mobile_num, String first_name, String last_name, String address, String email, Owner owner,int id
+			) {
+		super();
+		this.mobile_num = mobile_num;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.email = email;
+		this.owner = owner;
+		owner.setOwner_id(id);
+	}
+
+
+
 
 	public Guest() {
 		super();

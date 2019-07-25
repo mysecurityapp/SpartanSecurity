@@ -9,31 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Congratulations!!! You are registered</h1>
-<h4>Last action status: ${requestScope.status}</h4>
-	<h3>Secuirty List</h3>
+	<h3>vendor List</h3>
 	<table style="background-color: cyan; margin: auto;">
-		<c:forEach var="v" items="${requestScope.vendor_list}">
+		<c:forEach var="v" items="${requestScope.status}">
 
 			<tr>
-				<td>${v.id}</td>
+				<td>${v.vid}</td>
 				<td>${v.first_name}</td>
 				<td>${v.last_name}</td>  
+				<td>${v.role}</td>
+				<td>${v.mobile}</td>
 				<td>${v.address}</td>
-				<td>${v.mobile_numb}</td>
-				<td>${v.password}</td>
-				<td>${v.email}</td>  
-				<td>${v.saheb.owner_id}</td>
-				<td>${v.mobile_numb}</td>
-				<td><a href="<spring:url value='/admins/updateSec?vid=${v.id}'/>">Update</a></td>
-			
-
+				<td>${v.email}</td>  			
 			</tr>
 		</c:forEach>
 	</table>
-	<h5>
-		<a href="<spring:url value='/admins/add'/>">Add New Security</a>
-	</h5>
+	
 
 </body>
 </html>

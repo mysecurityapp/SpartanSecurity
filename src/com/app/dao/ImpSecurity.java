@@ -16,6 +16,7 @@ import com.app.pojos.Guest;
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Suppliers;
 import com.app.pojos.Vehicle;
 
 
@@ -207,6 +208,39 @@ public class ImpSecurity implements ISecurity {
 		// TODO Auto-generated method stub
 		return sf.getCurrentSession().get(Owner
 				.class, vid);
+	}
+
+	@Override
+	public String registerGuestbyOwner(Guest v) {
+		// TODO Auto-generated method stub
+		sf.getCurrentSession().save(v); //persistent
+		//	sf.getCurrentSession().save(v);
+			return "Guest detials inserted for id"+v.getGuest_id();
+	}
+
+	@Override
+	public List<Suppliers> listSuppliers(String role) {
+		// TODO Auto-generated method stub
+		System.out.println("in dao of Suppliers list");
+		String jpql="select v from Suppliers v where v.role=:rl";
+		return sf.getCurrentSession().createQuery(jpql,Suppliers.class).setParameter("rl", role)
+				.getResultList();
+	}
+
+	@Override
+	public Guest GetGuestDetail(String MobileNo) {
+		// TODO Auto-generated method stub
+		String jpql="select v from Guest v where v.mobile_num=:no";
+		return sf.getCurrentSession().createQuery(jpql,Guest.class)
+				.setParameter("no", MobileNo)
+				.getSingleResult();
+	}
+
+	@Override
+	public String registerSuppliers(Suppliers v) {
+		sf.getCurrentSession().save(v); //persistent
+		//	sf.getCurrentSession().save(v);
+			return "Vendor detials inserted for id"+v.getVid();
 	}
 	
 

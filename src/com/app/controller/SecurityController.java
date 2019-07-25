@@ -10,14 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.pojos.Guest;
 import com.app.pojos.GuestEntry;
+import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Suppliers;
 import com.app.pojos.Vendor;
 import com.app.service.ISecurityService;
 import com.app.service.IVendorService;
@@ -192,6 +196,67 @@ public class SecurityController {
 	
 	
 	
+	@GetMapping("/regGuest")
+	public String showMobileForm() {
+		
+		System.out.println("in show mobile form");
+		
+		
+		return "/security/mobileReg";  
+	}
+	
+	@PostMapping("/regGuest") // =@RequestMapping + method=post
+	public String processGuestEntry(Model map,@RequestParam String mobile,HttpSession ts,RedirectAttributes your) 
+	{
+		System.out.println("in register guest");
+		
+		try {
+			ts.setAttribute("GuestMahiti",service.GetGuestDetail(mobile));
+			
+			
+			return "redirect:/security/regGuestEntry";
+		} catch (RuntimeException e) {
+			System.out.println("err in user controller " + e);
+			
+			return "redirect:/security/register";
+		}
+	}
+	
+	@GetMapping("/regGuestEntry")
+	public String showGuestEntryForm(GuestEntry v) {
+		
+		System.out.println("in show Guest entry form");
+		//System.out.println("in dinchak guest"+some.getFirst_name());
+	//	my.put("GuestDetail", service.GetGuestDetail(some.getMobile_num()));
+		
+		
+		return "/security/GuestEntryform";  
+	}
+	
+	
+	@PostMapping("/regGuestEntry") // =@RequestMapping + method=post
+	public String processGuestEntryDetails(
+			
+			GuestEntry v,
+			HttpSession hs
+			) {
+		Guest sd=(Guest) hs.getAttribute("GuestMahiti");
+		Security sc=(Security) hs.getAttribute("sec_dtls");
+		
+		
+		//String vehicle_no, Date in_Time, Date out_Time, Security securityid,int ScID, String flat_no,
+		//Guest athithi,int GID
+		GuestEntry gd=new GuestEntry(v.getVehicle_no(),new Date(),null,sc,sc.getId(),v.getFlat_no(),sd,sd.getGuest_id());
+		
+		service.registerGuestEntry(gd);
+		
+	//	System.out.println("hi there"+sd.getFirst_name());
+		
+		
+			return "redirect:/security/dashboard";
+		}	
+			
+	//}
 	
 	
 	
@@ -209,6 +274,32 @@ public class SecurityController {
 		response.setHeader("refresh", 
 				"5;url="+request.getContextPath());
 		return "/user/logout";
+	}
+
+	
+	@GetMapping("/addSupplier")
+	public String showSuplierRegistrationForm(Suppliers v) {
+		
+		//System.out.println("in show registr form"+v);
+		
+		return "/security/regSupplierForm";  //forward to reg form
+	}
+	
+	@PostMapping("/addSupplier") // =@RequestMapping + method=post
+	public String processRegisterForm(Suppliers v,RedirectAttributes flashMap,HttpSession hs) {
+		
+		
+		Security own=(Security) hs.getAttribute("sec_dtls");
+		//+String first_name, String last_name, String address, String mobile, String role, String email,
+		//Security secID,int sID) {
+		Suppliers sc=new Suppliers(v.getFirst_name(),v.getLast_name(),v.getAddress(),v.getMobile(),v.getRole(),v.getEmail(),own,own.getId());
+		
+		System.out.println("in process registration form"+v);
+		//v--transient
+		flashMap.addFlashAttribute("status", service.registerSuppliers(sc));
+		
+		return "/security/dashboard";
+
 	}
 
 }

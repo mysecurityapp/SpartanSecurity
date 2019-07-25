@@ -9,8 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h4>Last action status: ${requestScope.status}</h4>
 	<h3>Vendor List</h3>
+	<h1>Congratulations!!! You are registered</h1>
 	<table style="background-color: cyan; margin: auto;">
 		<c:forEach var="v" items="${requestScope.vendor_list}">
 

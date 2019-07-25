@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.app.pojos.Guest;
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
-
+import com.app.pojos.Suppliers;
 import com.app.pojos.Vehicle;
 import com.app.service.ISecurityService;
 
@@ -90,7 +91,7 @@ public class OwnerController {
 		System.out.println("in process registration form"+v);
 		//v--transient
 		flashMap.addFlashAttribute("status", sf.registerVehicle(sc));
-		return "redirect:/owner/vehicle";
+		return "redirect:/owner/Ownersvehicle";
 
 	}
 	
@@ -145,6 +146,49 @@ public class OwnerController {
 	
 	
 	
+	@GetMapping("/RegGuest")
+	public String showRegGuestForm(Guest V) {
+		System.out.println("in guest form");
+		return "/owner/guestReg";
+	}
+	
+	
+	
+	@PostMapping("/RegGuest") // =@RequestMapping + method=post
+	public String processRegGuestForm(Guest v,RedirectAttributes flashMap,HttpSession hs) {
+		
+		
+		Owner own=(Owner) hs.getAttribute("user_dtls");
+		Guest sc=new Guest(v.getMobile_num(),v.getFirst_name(),v.getLast_name(),v.getAddress(),v.getEmail(),own,own.getOwner_id());
+		
+		System.out.println("in process registration form"+v);
+		//v--transient
+		flashMap.addFlashAttribute("status", sf.registerGuestbyOwner(sc));
+		return "/owner/OwnersPortal";
+
+	}
+	
+	
+	@GetMapping("/suppliers")
+	public String showSelectionOfsuppliers(Suppliers v ) {
+		
+		
+		return "/owner/SelectVendor";
+		
+	}
+	
+	@PostMapping("/suppliers") // =@RequestMapping + method=post
+	public String processListSuppliersForm(Suppliers v,Model Map,HttpSession hs) {
+		
+		
+		Owner own=(Owner) hs.getAttribute("user_dtls");
+		String roll=v.getRole();
+		System.out.println("in process registration form"+v);
+		//v--transient
+		Map.addAttribute("status", sf.listSuppliers(roll));
+		return "/owner/listVendor";
+
+	}
 	
 	
 

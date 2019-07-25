@@ -34,11 +34,24 @@
 		<a href="<spring:url value='/owner/vehicle'/>">Add My Vehicle</a>
 	</h5>
 	<h5>
+		<a href="<spring:url value='/owner/Ownersvehicle'/>">Show my Vehicle</a>
+	</h5>
+	<h5>
 		<a href="<spring:url value='/owner/OwnersVisitors'/>">Show my visitors</a>
+	</h5>
+	<h5>
+		<a href="<spring:url value='/owner/ReportByDate'/>">Show my visitors by date</a>
 	</h5>
 	<h5>
 		<a href="<spring:url value='/admins/ReportBetweenDate'/>">Show visitors between date</a>
 	</h5>
+	<h5>
+		<a href="<spring:url value='/owner/suppliers'/>">find vendor</a>
+	</h5>
+	<h5>
+		<a href="<spring:url value='/owner/RegGuest'/>">register guest</a>
+	</h5>
+	
 	
 	</p>
 

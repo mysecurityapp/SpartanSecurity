@@ -10,6 +10,7 @@ import com.app.pojos.Guest;
 import com.app.pojos.GuestEntry;
 import com.app.pojos.Owner;
 import com.app.pojos.Security;
+import com.app.pojos.Suppliers;
 import com.app.pojos.Vehicle;
 
 
@@ -36,6 +37,16 @@ public interface ISecurity {
 	String registerGuest(Guest g);
 	String registerGuestEntry(GuestEntry g);
 	String checkout(String mobileNo);
+	
+	
+	String registerGuestbyOwner(Guest v);
+	
+	List<Suppliers> listSuppliers(String role);
+	
+	Guest GetGuestDetail(String MobileNo);
+	
+	String registerSuppliers(Suppliers v);
+	
 
 	
 }

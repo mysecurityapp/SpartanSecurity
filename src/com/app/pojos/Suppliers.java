@@ -20,6 +20,20 @@ public class Suppliers {
 	}
 
 
+	public Suppliers(String first_name, String last_name, String address, String mobile, String role, String email,
+			Security secID,int sID) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		Address = address;
+		this.mobile = mobile;
+		this.role = role;
+		this.email = email;
+		this.secID = secID;
+		secID.setId(sID);
+	}
+
+
 	public Suppliers(int vid, String first_name, String last_name, String address, String mobile, String role,
 			String email, Security secID) {
 		super();
